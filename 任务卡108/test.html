@@ -105,16 +105,16 @@
 			<label for="name"><h4>1.用例的粒度分为以下哪三种:</h4></label>
 			<form action="" method="get" class="form_1"> 
 		        <div class="checkbox">
-		        	<label><input name="" type="checkbox" /><p>(A)概述级</p> </label>
+		        	<label><input name="checkbox1" type="checkbox" /><p>(A)概述级</p> </label>
 		        </div>
 				<div class="checkbox">
-					<label><input name="" type="checkbox" /><p>(B)需求级 </p></label>
+					<label><input name="checkbox1" type="checkbox" /><p>(B)需求级 </p></label>
 				</div>
 				<div class="checkbox">
-					<label><input name="" type="checkbox" /><p>(C)用户目标级</p></label>
+					<label><input name="checkbox1" type="checkbox" /><p>(C)用户目标级</p></label>
 				</div>
 				<div class="checkbox">
-					<label><input name="" type="checkbox" /><p>(D)子功能级 </p></label>
+					<label><input name="checkbox1" type="checkbox" /><p>(D)子功能级 </p></label>
 				</div>
 			</form> 
 		</div>
@@ -122,16 +122,16 @@
 	 		<label for="name"><h4>2.类图由以下哪三个部分组成：</h4></label>
 	 		<form action="" method="get" class="form_1">
 	        	<div class="checkbox">
-	    			<label><input type="checkbox" name="" ><p>(A)名称(Name)</p></label>
+	    			<label><input type="checkbox" name="checkbox2" ><p>(A)名称(Name)</p></label>
 				</div>
 				<div class="checkbox">
-	    			<label><input type="checkbox" name="" ><p>(B)属性(Attribute) </p></label>
+	    			<label><input type="checkbox" name="checkbox2" ><p>(B)属性(Attribute) </p></label>
 				</div>
 	  			<div class="checkbox">
-	    			<label><input type="checkbox" name="" ><p>(C)操作(Operation)</p></label>
+	    			<label><input type="checkbox" name="checkbox2" ><p>(C)操作(Operation)</p></label>
 				</div>  
 	   			<div class="checkbox">
-	    			<label><input type="checkbox" name="" ><p>(D)方法(Function)</p></label>
+	    			<label><input type="checkbox" name="checkbox2" ><p>(D)方法(Function)</p></label>
 				</div>
 			</form>
 		</div>
@@ -155,10 +155,11 @@
 		</div>
 		<div class="chance_radic">
 			<h4>1.简述什么是模型以及模型的表现形式？</h4>
-			<textarea id="form-control" name="desc" rows="6" required="" ng-model="contact.feedback.desc" placeholder="" > </textarea>
+			<textarea id="form-control" name="desc" rows="6" required="" ng-model="contact.feedback.desc" placeholder=""> </textarea>
 	    </div>
 		<button type="button" class="btn btn-primary" onclick="total_score()">提交</button>
 	</form>
+</div>
 </body>
 <script type="text/javascript">
 	function total_score() {
@@ -167,6 +168,7 @@
 		var answer2_1 = myform.answer2_1.value;
 		var answer2_2 = myform.answer2_2.value;
 		var answer2_3 = myform.answer2_3.value;
+		//填空
 		if(answer1 == "统计建模语言") {
 			score += 5;
 		}
@@ -179,12 +181,48 @@
 		if(answer2_3 == "多态性" || answer2_1 == "多态性" || answer2_2 == "多态性") {
 			score += 5;
 		}
-		var obj = document.getElementsByName("redioname");
-		// if(obj[1].checked) {	
-		//  	score += 10;
-		// }
+		if(answer1 == "" || answer2_1 == "" || answer2_2 == "" || answer2_3 == "") {
+			alert("请填写完整")
+		}
+		//单选
+		var obj = document.getElementsByName("radioname");
+		if(obj[1].checked) {
+			score += 10;
+		}
+		var obj_2 = document.getElementsByName("optionsRadios");
+		if(obj_2[0].checked) {
+			score += 10;
+		}
+		//多选
+		var multiselect_1 = document.getElementsByName("checkbox1");
+		if(multiselect_1[0].checked && multiselect_1[1].checked && multiselect_1[3].checked) {
+			score += 10;
+		}
+		var multiselect_2 = document.getElementsByName("checkbox2");
+		if(multiselect_2[0].checked && multiselect_2[1].checked && multiselect_2[2].checked) {
+			score += 10;
+		}
+		if(multiselect_1.checked == false) {
+			alert("请填写完整")
+		}
+		if(multiselect_2.checked == false) {
+			alert("请填写完整")
+		}
+		//判断
+		var judge_1 = document.getElementsByName("chance");
+		var judge_2 = document.getElementsByName("chance1");
+		if(judge_1[1].checked) {
+			score += 10;
+		}
+		if(judge_2[0].checked) {
+			score += 10;
+		}
+		//简答
+	    var text = document.getElementById('form-control');
+	    if(text.value == "模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。") {
+	    	score += 20;
+	    }
 		alert(score);
-
-	};
+	}
 </script>
 </html>
