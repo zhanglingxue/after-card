@@ -43,7 +43,7 @@
 					<h4>1.UML的中文全称是:</h4>
 				</label>
 				<div class="col-sm-4">
-					<input type="text" name="answer1_1" value="" >
+					<input type="text" name="answer1" value="" >
 				</div>
 			</div>
 			<div class="col-xs-12 form-group">
@@ -51,13 +51,13 @@
 					<h4>2.对象最突出的特征是:</h4>
 				</label>
 				<div class="col-sm-2">
-					<input type="text" name="answer2_1" value="" >
+					<input type="text" name="answer2" value="" >
 				</div>
 				<div class="col-sm-2">
-					<input type="text" name="answer2_2" value="" >
+					<input type="text" name="answer2" value="" >
 				</div>
 				<div class="col-sm-2">
-					<input type="text" name="answer2_3" value="" >
+					<input type="text" name="answer2" value="" >
 				</div>
 			</div>
 		</form>
@@ -157,72 +157,9 @@
 			<h4>1.简述什么是模型以及模型的表现形式？</h4>
 			<textarea id="form-control" name="desc" rows="6" required="" ng-model="contact.feedback.desc" placeholder=""> </textarea>
 	    </div>
-		<button type="button" class="btn btn-primary" onclick="total_score()">提交</button>
+		<button type="button" class="btn btn-primary" onclick="total_score()" id="btn">提交</button>
 	</form>
 </div>
 </body>
-<script type="text/javascript">
-	function total_score() {
-		var score = 0;
-		var answer1 = myform.answer1_1.value;
-		var answer2_1 = myform.answer2_1.value;
-		var answer2_2 = myform.answer2_2.value;
-		var answer2_3 = myform.answer2_3.value;
-		//填空
-		if(answer1 == "统计建模语言") {
-			score += 5;
-		}
-		if(answer2_1 == "继承性" || answer2_2 == "继承性" || answer2_3 == "继承性" ) {
-			score += 5;
-		}
-		if(answer2_2 == "封装性" || answer2_1 == "封装性" || answer2_3 == "封装性") {
-			score += 5;
-		}
-		if(answer2_3 == "多态性" || answer2_1 == "多态性" || answer2_2 == "多态性") {
-			score += 5;
-		}
-		if(answer1 == "" || answer2_1 == "" || answer2_2 == "" || answer2_3 == "") {
-			alert("请填写完整")
-		}
-		//单选
-		var obj = document.getElementsByName("radioname");
-		if(obj[1].checked) {
-			score += 10;
-		}
-		var obj_2 = document.getElementsByName("optionsRadios");
-		if(obj_2[0].checked) {
-			score += 10;
-		}
-		//多选
-		var multiselect_1 = document.getElementsByName("checkbox1");
-		if(multiselect_1[0].checked && multiselect_1[1].checked && multiselect_1[3].checked) {
-			score += 10;
-		}
-		var multiselect_2 = document.getElementsByName("checkbox2");
-		if(multiselect_2[0].checked && multiselect_2[1].checked && multiselect_2[2].checked) {
-			score += 10;
-		}
-		if(multiselect_1.checked == false) {
-			alert("请填写完整")
-		}
-		if(multiselect_2.checked == false) {
-			alert("请填写完整")
-		}
-		//判断
-		var judge_1 = document.getElementsByName("chance");
-		var judge_2 = document.getElementsByName("chance1");
-		if(judge_1[1].checked) {
-			score += 10;
-		}
-		if(judge_2[0].checked) {
-			score += 10;
-		}
-		//简答
-	    var text = document.getElementById('form-control');
-	    if(text.value == "模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。") {
-	    	score += 20;
-	    }
-		alert(score);
-	}
-</script>
+<script type="text/javascript" src="index.js"></script>
 </html>
