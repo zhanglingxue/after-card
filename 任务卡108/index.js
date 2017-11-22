@@ -1,12 +1,12 @@
-	function choose(obj) {
+function choose(obj) {
 	if(!obj[0].checked && !obj[1].checked && !obj[2].checked && !obj[3].checked) {
-		alert("请填写完整选择题")
+		alert("请填写完整选择题");
 		return false;
 	}
 }
 function judge(jud) {
 	if(!jud[0].checked && !jud[1].checked) {
-		alert("请填写完整判断题")
+		alert("请填写完整判断题");
 		return false;
 	}
 }
@@ -14,22 +14,22 @@ function total_score() {
 	var score = 0;
 	var answer1 = document.getElementsByName("answer1");
 	var answer2 = document.getElementsByName("answer2");
-	if(answer1[0].value == "统计建模语言") {
+	if(answer1[0].value === "统计建模语言") {
 		score += 5;
 	}
-	if(answer1[0].value == "") {
-		alert("请填写完整填空题")
+	if(answer1[0].value === "") {
+		alert("请填写完整填空题");
 		return false;
 	}
 	for(var i = 0;i < answer2.length;i ++) {
-		if(answer2[i].value == "继承性") {
+		if(answer2[i].value ==="继承性") {
 			score += 5;
-		}else if(answer2[i].value == "封装性") {
+		}else if(answer2[i].value === "封装性") {
 			score += 5;
-		}else if(answer2[i].value == "多态性") {
+		}else if(answer2[i].value === "多态性") {
 			score += 5;
-		}else if(answer2[i].value == "") {
-	 		alert("请填写完整填空题")
+		}else if(answer2[i].value === "") {
+	 		alert("请填写完整填空题");
 	 		return false;
 	 	}
 	}
@@ -84,11 +84,11 @@ function total_score() {
 
 	//简答
     var text = document.getElementsByName("desc");
-    if(text[0].value == "模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。") {
+    if(text[0].value === "模型是对现实世界的简化和抽象，模型是对所研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。") {
     	score += 20;
     }
-    if(text[0].value == "") {
-    	alert("text不可为空")
+    if(text[0].value === "") {
+    	alert("text不可为空");
     	return false;
     }
     bt = document.getElementById("btn");
