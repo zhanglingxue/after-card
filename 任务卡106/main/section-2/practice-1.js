@@ -8,7 +8,7 @@ module.exports = function countSameElements(collection) {
          var res = {};
          for(var j = i; j < collection.length; j++)
          {
-              if (collection[i] == collection[j]) {
+              if (collection[i] === collection[j]) {
                    count++;
               }
          }

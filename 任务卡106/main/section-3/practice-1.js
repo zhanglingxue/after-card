@@ -6,7 +6,7 @@ module.exports = function createUpdatedCollection(collectionA, objectB) {
   {
       for(var j = 0;j < objectB[value].length;j++)
       {
-          if(objectB[value][j] == collectionA[i]['key'])
+          if(objectB[value][j] === collectionA[i]['key'])
           {
               collectionA[i]['count'] -= 1;
           }
