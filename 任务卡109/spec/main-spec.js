@@ -1,4 +1,4 @@
-const printInventory = require('../main/main');
+const main = require('../main/main');
 const datbase = require('../main/datbase');
 
 describe('pos', function () {
@@ -19,16 +19,11 @@ describe('pos', function () {
             'ITEM000005'
         ];
     });
-    it('输入商品信息',function () {
-        printInventory(inputs);
-        expect(inputs).toEqual([Object({ barcode: 'ITEM000001', num: 5 }), Object({ barcode: 'ITEM000003', num: 2 }), Object({ barcode: 'ITEM000005', num: 3 })]);
-    });
-
     it('should print correct text', function () {
 
         spyOn(console, 'log');
 
-        printInventory(inputs);
+        main(inputs);
 
         var expectText =
             '***<没钱赚商店>购物清单***\n' +
@@ -45,5 +40,6 @@ describe('pos', function () {
             '**********************';
 
         expect(console.log).toHaveBeenCalledWith(expectText);
+        //toHavebeenCalledWith:可以检查传入参数是否被作为参数调用过
     });
 });
