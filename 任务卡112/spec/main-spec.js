@@ -1,12 +1,11 @@
-const printInventory = require('../main/main');
-const datbase = require('../main/datbase');
+const main = require('../main/main');
 
 describe('pos', function () {
     var allItems;
     var inputs;
 
     beforeEach(function () {
-        allItems = datbase.loadAllItems();
+        allItems = loadAllItems();
         inputs = [
             'ITEM000001',
             'ITEM000001',
@@ -18,10 +17,6 @@ describe('pos', function () {
             'ITEM000005',
             'ITEM000005'
         ];
-    });
-    it('输入商品信息',function () {
-        printInventory(inputs);
-        expect(inputs).toEqual([Object({ barcode: 'ITEM000001', num: 5 }), Object({ barcode: 'ITEM000003', num: 2 }), Object({ barcode: 'ITEM000005', num: 3 })]);
     });
 
     it('should print correct text', function () {

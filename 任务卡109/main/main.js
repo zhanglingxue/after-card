@@ -4,14 +4,13 @@ module.exports = function main(){
     var inputs = arguments[0];   //参数(arguments)对象包含了所有传给函数的参数,并且像数列一样排着序.
     var arr = [];
     var i,j;
-
+    var info = {};
     //统计inputs商品信息
     for(i = 0;i < inputs.length;){
         if(inputs[i].indexOf("-") > 0){
-            arr.push({
-                barcode:inputs[i].split("-")[0],
-                num:inputs[i].split("-")[1]
-            });
+            info["barcode"] = inputs[i].split("-")[0];
+            info["num"] = inputs[i].split("-")[1];
+            arr.push(info);
             i ++;
         }else{
             var count = 0;
@@ -27,7 +26,7 @@ module.exports = function main(){
             i += count;
         }
     }
-
+    console.log(arr);
     //获得全部商品和优惠商品信息
     var newArr = [],
         freeArr = [];
@@ -75,6 +74,7 @@ module.exports = function main(){
         expectText += "名称：" + newArr[i].name + "，数量：" + newArr[i].num + newArr[i].unit +
             "，单价：" + newArr[i].price.toFixed(2) + "(元)，小计：" +
             newArr[i].moneys.toFixed(2) + "(元)\n";
+        //parseFloat()解析一个字符串并返回一个浮点数
         sum += parseFloat(newArr[i].moneys);
     }
     expectText += '----------------------\n' +
@@ -87,5 +87,6 @@ module.exports = function main(){
                   '总计：' + sum.toFixed(2) + '(元)\n' +
                   '节省：' + freeSum.toFixed(2) + '(元)\n' +
                   '**********************';
+
     console.log(expectText);
 };
