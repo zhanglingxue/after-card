@@ -65,7 +65,7 @@ module.exports = function main(){
             }
         }
     }
-
+    console.log(newArr);
     //打印清单（显示优惠后的价格）
     var expectText = '***<没钱赚商店>购物清单***\n',
         sum = 0,
