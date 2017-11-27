@@ -1,4 +1,4 @@
-module.exports = function loadAllItems() {
+function loadAllItems() {
     return [
         {
             barcode: 'ITEM000000',
@@ -37,9 +37,9 @@ module.exports = function loadAllItems() {
             price: 4.50
         }
     ];
-};
+}
 
-module.exports = function loadPromotions() {
+function loadPromotions() {
     return [
         {
             type: 'BUY_TWO_GET_ONE_FREE',
@@ -50,4 +50,6 @@ module.exports = function loadPromotions() {
             ]
         }
     ];
-};
+}
+
+ module.exports = {loadAllItems, loadPromotions};

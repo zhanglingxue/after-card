@@ -29,37 +29,37 @@ describe('pos', function () {
     ];
     var buy_after = [
         {
-            barcode:'ITEM000001',
+            barcode: 'ITEM000001',
             name: '雪碧',
-            num:5,
-            unit:'瓶',
-            price:3,
-            money:12
+            num: 5,
+            unit: '瓶',
+            price: 3,
+            moneys: 12
         },
         {
-            barcode:'ITEM000003',
+            barcode: 'ITEM000003',
             name: '荔枝',
-            num:2,
-            unit:'斤',
-            price:15,
-            money:30
+            num: 2,
+            unit: '斤',
+            price: 15,
+            moneys: 30
         },
         {
-            barcode:'ITEM000005',
+            barcode: 'ITEM000005',
             name: '方便面',
-            num:3,
-            unit:'袋',
-            price:4.5,
-            money:9
+            num: 3,
+            unit: '袋',
+            price: 4.5,
+            moneys: 9
         }
     ];
     it('商品录入', function () {
-        var result = main.main(inputs);
+        var result = main.summary(inputs);
         expect(result).toEqual(res);
     });
     it('统计输入商品最终信息', function () {
-        var result = main.free();
+        var arr = main.summary(inputs);
+        var result = main.free(arr);
         expect(result).toEqual(buy_after);
     });
-
 });
