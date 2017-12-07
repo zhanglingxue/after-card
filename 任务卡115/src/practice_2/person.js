@@ -3,9 +3,10 @@ function Person(name,age) {
     person.name = name;
     person.age = age;
     person.introduce = function () {
-        return 'My name is'+' '+ this.name+'.'+' '+'I am'+' '+ this.age +' '+'years old'+'.';
+        return 'My name is '+ this.name+'. I am '+ this.age +' years old.';
     };
     // person.introduce();
     return person;
 }
+
 module.exports = Person;
