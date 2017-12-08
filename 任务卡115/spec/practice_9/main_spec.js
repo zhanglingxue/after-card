@@ -149,13 +149,9 @@ describe("Class", () => {
         it("should change student's klass attribute", () => {
             const klass = new Class(2);
             const otherKlass = new Class(3);
-
             const student = new Student(1, "Jerry", 21, otherKlass);
-
             expect(student.klass).to.equal(otherKlass);
-
             klass.appendMember(student);
-
             expect(student.klass).to.equal(klass);
         });
     });
