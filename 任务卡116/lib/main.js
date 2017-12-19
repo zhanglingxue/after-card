@@ -1,21 +1,100 @@
+let stu = [
+        ['zlx','201','han','110','120','100','120'],
+        ['www','202','han','108','125','99','120'],
+        ['maa','203','hui','110','129','102','110'],
+        ['nic','204','han','119','119','110','113']
+        ];
+
+function sortNumber(a,b)
+{
+    return a - b;
+}
 function Main() {
-     console.log(`1. 添加学生
+    　　console.log(`1. 添加学生
 2. 生成成绩单
 3. 退出
 请输入你的选择（1～3）：`);
-
-     let scanf=require('scanf');
-     let str=scanf("%d");
-     if(str === 1) {
-         console.log('请输入学生信息（格式：姓名, 学号, 民族, 班级, 学科: 成绩, ...），按回车提交:');
-         let input = scanf('%s');
-         console.log(input);
-     }
-
+    let scanf = require('scanf');
+    let str = scanf("%d");
+    if(str === 1) {
+        addStu();
+    } else if(str === 2) {
+        Print();
+    }else {
+        return;
+    }
 }
 
+let newArr = [];
+function addStu() {
+    let arr = [];
+    console.log('请输入学生信息（格式：姓名, 学号, 民族, 班级, 数学: 成绩, 语文: 成绩, 英语: 成绩, 编程: 成绩），按回车提交:');
+    let scanf = require('scanf');
+    let input = scanf('%s');
+    arr = input.split(',');
+    while (arr.length !== 8) {
+        console.log('请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：');
+        input = scanf('%s');
+        arr = input.split(',');
+    }
+    newArr.push(arr);
+    console.log('学生' + newArr[0][0] + '的成绩被添加');
+    Main();
+}
 
-
-
+function Print() {
+    let i, j, m, n;
+    let allSum = 0,
+        allAver;
+    let arr = [];
+    console.log('请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：');
+    let scanf = require('scanf');
+    let input = scanf('%s');
+    let stuId = input.split(',');
+    // 判断输入是否为数字
+    for (i in stuId) {
+        // 跳转语句
+        mainloop: while (isNaN(stuId[i])) {
+            console.log('请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：');
+            input = scanf('%s');
+            stuId = input.split(',');
+            continue mainloop;
+        }
+    }
+    let expectText = '成绩单\n'+ '姓名|数学|语文|英语|编程|平均分|总分\n'+'=====================================\n';
+    for(i in stuId) {
+        let sum = 0,
+        aver = 0;
+        for(j in stu) {
+            if(stuId[i] === stu[j][1]) {
+                expectText += stu[j][0];
+                for(m=3;m <= 6;m ++){
+                    sum += parseInt(stu[j][m]);
+                    expectText += '|'+stu[j][m];
+                }
+                arr.push(sum);
+                aver = sum /4;
+                expectText += '|'+aver+'|'+sum+'\n';
+            }
+        }
+    }
+    for(n in stu) {
+        for(m=3;m <= 6;m ++) {
+            allSum += parseInt(stu[n][m]);
+        }
+    }
+    arr.sort(sortNumber);
+    let mainnum;
+    if(arr.length % 2 === 0) {
+        i = arr.length / 2;
+        mainnum = parseInt((arr[i] + arr[i+1]) / 2);
+    }else {
+        mainnum = parseInt(arr[arr.length % 2]);
+    }
+    allAver = allSum / stu.length;
+    expectText += '=====================================\n'+'全班总分平均数：'+ allAver +'\n'+'全班总分中位数：'+mainnum;
+    console.log(expectText);
+    Main();
+}
 
 module.exports = {Main};
