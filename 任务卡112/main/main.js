@@ -1,7 +1,6 @@
 const datbase = require("./datbase");
 
 exports.summary =function summary(inputs){
-    var inputs = inputs;
     let arr = [];
     let i,j;
     for(i = 0;i < inputs.length;){
@@ -12,7 +11,7 @@ exports.summary =function summary(inputs){
             });
             i ++;
         }else{
-            var count = 0;
+            let count = 0;
             for(j = i;j < inputs.length;j ++){
                 if(inputs[i] === inputs[j]){
                     count ++;
@@ -29,15 +28,15 @@ exports.summary =function summary(inputs){
 };
 
 exports.free = function free(arr) {
-    var i,j;
+    let i,j;
 
      //获得全部商品和优惠商品信息
-    var newArr = [], freeArr = [];
-    var items = datbase.loadAllItems(),
+    let newArr = [], freeArr = [];
+    let items = datbase.loadAllItems(),
         pros = datbase.loadPromotions();
-    // var arr1 = arr;
+    // let arr1 = arr;
     //购买商品的全部信息（优惠前的价格）
-    var money = 0;
+    let money = 0;
     for(i = 0;i < arr.length;i ++){
         for(j = 0;j < items.length;j ++){
             if(arr[i].barcode === items[j].barcode){

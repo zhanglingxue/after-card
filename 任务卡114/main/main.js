@@ -2,7 +2,7 @@
 
 //随机生成4位不相同的数
 function inTeger() {
-    var arr=[1,2,3,4,5,6,7,8,9,0];
+    var arr=[0,1,2,3,4,5,6,7,8,9];
     var res=[];
     var len=0;
     var index=0;
