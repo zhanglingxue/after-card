@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-
+    <link rel="stylesheet" href="bootstrap.min.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../node_modules/lodash/lodash.min.js"></script>
     <script src="js/main.js"></script>
 
     <title>Form Designer</title>
+    <style>
+    </style>
 </head>
 
 <body>
-<div>
-    <div id="container"></div>
+<div class="container">
+    <div id="dialog" title="选择对话框">
+        <select id="hourEnd" class="selectpicker"  onchange="getDate()">
+            <option value="文本">文本</option>
+            <option value="日期">日期</option>
+        </select>
+        <button id="sure" type="button" class="btn btn-success btn-sm">提交</button>
+    </div>
+    <button id="opener" type="button" class="btn btn-primary btn-sm">添加</button>
+    <button id="preview" type="button" class="btn btn-primary btn-sm">预览</button>
+    <div id="father">
+        <form action="" method="post" name="conform" class="conform">
+            <fieldset>
+                <legend>配置</legend>
+                <input type="text" value="" name="testName" class="testName"/>
+                <input type='button' class='btnDel btn btn-warning btn-sm' value='删除' onclick = "$(this).parent().remove();"/>
+            </fieldset>
+        </form>
+    </div>
 </div>
 </body>
 </html>
