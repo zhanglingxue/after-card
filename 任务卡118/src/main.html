@@ -12,6 +12,9 @@
 
     <title>Form Designer</title>
     <style>
+        .click{
+            display: none;
+        }
     </style>
 </head>
 
@@ -29,7 +32,7 @@
     <div id="father">
         <form action="" method="post" name="conform" class="conform">
             <fieldset>
-                <legend>配置</legend>
+                <legend>字段</legend>
                 <input type="text" value="" name="testName" class="testName"/>
                 <input type='button' class='btnDel btn btn-warning btn-sm' value='删除' onclick = "$(this).parent().remove();"/>
             </fieldset>
